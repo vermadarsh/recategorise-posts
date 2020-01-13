@@ -1,5 +1,5 @@
 <?php
-
+//test
 /**
  * Add custom command at wp-cli init.
  */
