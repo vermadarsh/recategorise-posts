@@ -10,4 +10,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-include 'categorise-posts.php';
+include 'categorise-posts-new.php';
