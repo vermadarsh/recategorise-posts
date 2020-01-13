@@ -53,49 +53,6 @@ if ( ! class_exists( 'wpcliRecategorizePosts' ) ) {
 		 */
 		public function categorize_all_posts() {
 			$this->posts = $this->fetch_posts();
-/**
- * Add custom command at wp-cli init.
- */
-function lwpcli_initialize() {
-	WP_CLI::add_command( 'categorize_posts', 'wpcliRecategorizePosts' );
-}
-add_action( 'cli_init', 'lwpcli_initialize' );
-
-/**
- * Callback class when the custom command shall run.
- */
-if ( ! class_exists( 'wpcliRecategorizePosts' ) ) {
-	class wpcliRecategorizePosts {
-
-		public function __construct() {
-			$posts = array();
-		}
-
-		/**
-		 * Fetch the posts.
-		 *
-		 * @return int[]|WP_Post[]
-		 */
-		public function fetch_posts() {
-			$posts = get_posts(
-				array(
-					'post_type'      => 'post',
-					'posts_per_page' => - 1,
-					'fields'         => 'ids'
-				)
-			);
-			if ( empty( $posts ) ) {
-				WP_CLI::error( esc_html__( 'There isn\'t any post created yet!', 'learn-wpcli' ) );
-			} else {
-				return $posts;
-			}
-		}
-
-		/**
-		 * Categorize the posts.
-		 */
-		public function categorize_all_posts() {
-			$this->posts = $this->fetch_posts();
 			if ( ! empty( $this->posts ) && is_array( $this->posts ) ) {
 				foreach ( $this->posts as $post_id ) {
 					$categories = get_the_category( $post_id );
