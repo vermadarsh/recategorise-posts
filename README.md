@@ -1,2 +1,2 @@
-# recategorise-posts
-WP CLI sample code to recategorise posts.
+# Develop WP-CLI command to recategorize posts.
+If any post have uncategorized category then assign Default Category (which can be set from WP Writing Settings). Also, any other category set to post then it should not remove.
